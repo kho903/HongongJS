@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 별의 초기 설정
+            const star = document.querySelector('h1')
+            star.style.position = 'absolute' // style 속성을 조작해 position 값을 설정함.
+
+            // 별의 이동을 출력하는 기능
+            let [x, y] = [0, 0]
+            const block = 20
+            const print = () => {
+                star.style.left = `${x * block}px`
+                star.style.top = `${y * block}px`
+            }
+            print()
+
+            // 별을 이동하는 기능
+            const [left, up, right, down] = [37, 38, 39, 40] // 방향키 keyCode (키 코드)를 쉽게 사용할 수 있게 변수를 사용해 이름을 붙임.
+            document.body.addEventListener('keydown', (event) => {
+                switch (event.keyCode) {
+                    case left:
+                        x -= 1
+                        break
+                    case up:
+                        y -= 1
+                        break
+                    case right:
+                        x += 1
+                        break
+                    case down:
+                        y += 1
+                        break
+                }
+                print()
+            })
+        })
+    </script>
+</head>
+<body>
+<h1>★</h1>
+</body>
+</html>
