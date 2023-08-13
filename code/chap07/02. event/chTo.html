@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let 현재값
+        let 변환상수 = 10
+
+        const select = document.querySelector('select')
+        const input = document.querySelector('input')
+        const span = document.querySelector('span')
+
+        const calculate = () => {
+            span.textContent = (현재값 * 변환상수).toFixed(2) // 소수점 2번째 자리까지 출력
+        }
+
+        select.addEventListener('change', (event) => {
+            const options = event.currentTarget.options
+            const index = event.currentTarget.options.selectedIndex
+            변환상수 = Number(options[index].value) // 항목을 선택하면 항목의 value 속성을 추출함.
+            calculate()
+        })
+
+        input.addEventListener('keyup', (event) => {
+            현재값 = Number(event.currentTarget.value) // 값을 입력하면 현재 값을 추출함.
+            calculate()
+        })
+    })
+</script>
+</head>
+<body>
+<input type="text"> cm =
+<span></span>
+<select>
+    <option value="10">mm</option>
+    <option value="0.01">m</option>
+    <option value="0.393701">inch</option>
+</select>
+</body>
+</html>
