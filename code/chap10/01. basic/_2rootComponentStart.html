@@ -10,10 +10,12 @@
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 <body>
-    <div id="root"></div> <!-- div#root 태그를 만듦. -->
-    <!--  리액트를 사용하는 코드 입력  -->
-    <!-- type 속성에 "text/babel"을 지정함. -->
+    <div id="root"></div>
     <script type="text/babel">
+        const component = <h1>리액트 기본</h1>
+        const container = document.getElementById('root')
+
+        ReactDOM.render(component, container)
     </script>
 </body>
 </html>
