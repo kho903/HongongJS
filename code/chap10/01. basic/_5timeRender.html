@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--  리액트 사용 준비  -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor(props) {
+                super(props);
+                // 시간을 출력할 것이므로 state 속성에 시간을 저장했음.
+                this.state = {
+                    time: new Date()
+                }
+            }
+
+            render() {
+                // state 속성에 있는 값을 출력함.
+                return <h1>{this.state.time.toLocaleString()}</h1>
+            }
+
+            componentDidMount() {
+                // 컴포넌트가 화면에 출력되었을 때
+                this.timerId = setInterval(() => {
+                    this.setState({
+                        time: new Date() // setState() 메소드를 사용해서 시간을 변경함.
+                    })
+                }, 1000)
+            }
+
+            componentWillUnmount() {
+                // 컴포넌트가 화면에서 제거될 때
+                clearInterval(this.timerId)
+            }
+        }
+
+        // 출력하기
+        const container = document.getElementById('root')
+        ReactDOM.render(<App />, container)
+    </script>
+</body>
+</html>
