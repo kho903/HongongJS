@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--  리액트 사용 준비  -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    class App extends React.Component {
+        constructor(props) {
+            super(props);
+            // 클릭한 횟수를 출력할 것이므로 state 속성에 일단 0을 저장함.
+            this.state = {
+                count : 0
+            }
+        }
+
+        render() {
+            // onClick 대소문자 주의
+            return <div>
+                <h1>클릭한 횟수: {this.state.count}</h1>
+                <button onClick={this.countUp}>클릭</button>
+            </div>
+        }
+
+        countUp = (event) =>{
+            this.setState({
+                count: this.state.count + 1
+            })
+        }
+    }
+
+    // 출력하기
+    const container = document.getElementById('root')
+    ReactDOM.render(<App />, container)
+</script>
+</body>
+</html>
